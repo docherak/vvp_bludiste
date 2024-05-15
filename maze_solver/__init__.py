@@ -1,8 +1,10 @@
 """
-This is a maze package.
+This is a maze_solver package.
 
 It contains following modules:
-- maze: contains a Maze class
+- maze_solver: contains a Maze class
+- maze_generator: contains a MazeGenerator class
 """
 
 from .maze_solver import Maze
+from .maze_generator import MazeGenerator

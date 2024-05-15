@@ -3,10 +3,11 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 import scipy.sparse as sp
-from typing import Union, Tuple
+from typing import Union
 import heapq
 
 class Maze:
+    
     def __init__(self, input_data: Union[str, np.ndarray] = None):
         self.map = None
         self.start = None
@@ -18,6 +19,8 @@ class Maze:
                 self.map = input_data
             self.start = 0
             self.goal = self.map.size - 1
+            self.map[0, 0] = False
+            self.map[-1, -1] = False
 
     def from_csv(self, filename: str) -> np.ndarray:
         return np.genfromtxt(filename, delimiter=',', dtype=int).astype(bool)
@@ -50,6 +53,9 @@ class Maze:
         Performs the Dijkstra's algorithm to find the shortest path
         in the maze using an incidence matrix.
         """
+        if incidence_matrix is None:
+            raise ValueError('Incidence matrix is not defined.')
+    
         num_vertices = incidence_matrix.shape[0]
         distances = np.full(num_vertices, np.inf)
         previous = np.full(num_vertices, -1, dtype=int)
@@ -69,7 +75,6 @@ class Maze:
                         previous[v] = u
                         heapq.heappush(priority_queue, (alt, v))
 
-        
         path = []
         step = self.goal
         if distances[self.goal] == np.inf:
@@ -116,4 +121,9 @@ class Maze:
         ax[1].set_title('Solution')
         ax[1].axis('off')
 
+        plt.show()
+
+    def plot(self):
+        cmap_maze = ListedColormap(['white', 'black'])          # 0: průchod, 1: stěna
+        plt.imshow(self.map, cmap=cmap_maze)
         plt.show()
