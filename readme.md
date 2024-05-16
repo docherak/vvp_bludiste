@@ -1,4 +1,4 @@
-# Hledání nejkratší cesty v bludišti
+# Hledání nejkratší cesty v bludišti (WIP)
 
 ## Textový popis
 

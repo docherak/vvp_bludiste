@@ -25,6 +25,9 @@ class Maze:
     def from_csv(self, filename: str) -> np.ndarray:
         return np.genfromtxt(filename, delimiter=',', dtype=int).astype(bool)
     
+    def save(self, filename: str):
+        np.savetxt(filename, self.map.astype(int), fmt='%d', delimiter=',')
+    
     def incidence_matrix(self) -> sp.lil_matrix:
         def index(r: int, c: int) -> int:
             return r * cols + c
@@ -93,6 +96,7 @@ class Maze:
         path = self.dijkstra(incidence_matrix)
         if len(path) == 0:
             print('Path does not exist.')
+            self.plot()
             return
         
         maze_visual = np.zeros(self.map.shape, dtype=int)
