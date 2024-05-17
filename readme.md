@@ -1,4 +1,4 @@
-# Finding the shortest path in a maze (WIP)
+# Finding the shortest path in a maze
 
 ## Description
 
@@ -31,8 +31,8 @@ This is a final project for **Scientific Computing in Python** class at [VSB TUO
 - saving maze as a CSV file
 - functionalities are showcased in the `examples.ipynb` file
 
-## Docs (TODO)
-See 
+## Docs
+Generated via `sphinx` in `docs/_build/html`.
 
 ## Formatting, linting
 I used [ruff](https://github.com/astral-sh/ruff) and [pyright](https://github.com/microsoft/pyright).
