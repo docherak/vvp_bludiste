@@ -8,3 +8,5 @@ It contains following modules:
 
 from .maze_solver import Maze
 from .maze_generator import MazeGenerator
+
+__all__ = ["Maze", "MazeGenerator"]

@@ -1,32 +1,38 @@
-# Hledání nejkratší cesty v bludišti (WIP)
+# Finding the shortest path in a maze (WIP)
 
-## Textový popis
+## Description
 
-Tento projekt se zabývá řešením (hledáním nejkratší cesty) a také
-základním generováním bludišť. Základním vstupem bude bludiště
-$n\times n$, přičemž vstup do bludiště bude vždy levý horní roh a výstup
-bude vždy pravý dolní roh. Z jedné buňky do druhé se lze dostat pouze
-přes společnou hranu (nikoliv přes roh). Cílem projektu je implementovat
-algoritmy pro načítání, hledání nejkratší cesty a generování bludiště.
+This project deals with mazes - specifically generating and solving them. The input is a maze $n\times n$, where
+the start of the maze is the upper left corner and the end
+is the bottom right corner. It is only possible to get from one cell to another
+through a common edge (not through a corner). The goal of the project is to implement
+algorithms for retrieval, shortest path search and maze generation.
 
-Na začátku bude implementována funkce pro načítání bludiště z CSV
-souboru. Tato funkce bude umět načítat bludiště o libovolném rozměru
-$n\times n$ a uložit ho do paměti v podobě NumPy matice s True/False
-hodnotami (True = buňka je neprůchozí). Poté bude implementován
-algoritmus pro hledání nejkratší cesty. Poslední částí bude vytvoření
-generátoru bludiště za použití algoritmu pro hledání nejkratší cesty.
+This Maze class constructor creates / reads a maze $n\times n$ and stores it in memory as a NumPy matrix with True/False
+values. Dijkstra's algorithm is implemented for finding the shortest path. This algorithm is also used when generating
+random solvable maze. There are also multiple predefined maze templates available, which can be further randomized.
 
-Výstup bude formou obrázku (černá = neprostupná část, bílá = průchozí,
-červená = nejkratší cesta).
+The output is in the form of an image
+- black = impassable part
+- white = passable,
+- red = shortest path
 
-## Funcionality
+This is a final project for **Scientific Computing in Python** class at [VSB TUO](https://www.vsb.cz/en).
 
-- Implementovat načítání bludiště z CSV souboru
-- Implementovat algoritmus pro hledání nejkratší cesty (mezi levým horním rohem a pravým dolním rohem) za použití knihovny NumPy,který bude pracovat v následujících dvou krocích:
-  - Sestavení incidenční matice
-  - Hledání nejkratší cesty např. pomocí Dijkstrova algoritmu (jsou i jiné možnosti jako hledání do šířky, výběr je na vás)
-- Zapsat bludiště a nalezenou cestu do černobílého obrázku, kde cesta bude vyznačena červeně
-- Vytvořit funkci pro generování bludiště tak, aby mělo řešení (tj. aby existovala cesta mezi levým horním a pravým dolním rohem)
-  - funkce začne s nějakou šablonou (předdefinované v kódu) a poté bude zaplňovat bludiště v náhodných místech a kontrolovat, zda je stále průchozí
-  - šablon bude více (např. empty = volné bludiště, slalom = bariéry
-    aby cesta musela minimálně mít tvar S, \...) - budou s obrázky ukázané v Readme nebo examples.ipynb
+## Functionalities
+
+- loading a maze from a CSV file or using a generated NumPy matrix
+- finding the shortest path from start (top left corner) to end (bottom right corner) via:
+  - creating incidence matrix
+  - using Dijkstra's algorithm to find the shortest path
+- drawing the maze as a black/white picture with a red path if solution is found (otherwise just plotting the original maze)
+- generating a set of solvable templates (lines, slalom, "Angry Birds", randomized)
+  - each of these templates can be randomized further (not necessarily solvable)
+- saving maze as a CSV file
+- functionalities are showcased in the `examples.ipynb` file
+
+## Docs (TODO)
+See 
+
+## Formatting, linting
+I used [ruff](https://github.com/astral-sh/ruff) and [pyright](https://github.com/microsoft/pyright).
